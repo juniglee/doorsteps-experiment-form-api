@@ -27,7 +27,7 @@ namespace DoorstepsExperimentForm.DAL.Repository
 
         public async Task<IEnumerable<Form>> Get()
         {
-            return await _forms.Find(_ => true).ToListAsync();
+            return await _forms.Find(c => c.IsActive).ToListAsync();
         }
     }
 }

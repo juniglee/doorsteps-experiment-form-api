@@ -11,6 +11,7 @@ namespace DoorstepsExperimentForm.DAL.Model
         public string Id { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
+        public bool IsActive { get; set; }
         public IEnumerable<Question> Questions { get; set; }
     }
 
@@ -25,7 +26,7 @@ namespace DoorstepsExperimentForm.DAL.Model
 
     public class Option
     {
-        public int Key { get; set; }
-        public string Value { get; set; }
+        public string Key { get; set; }
+        public int Value { get; set; }
     }
 }
