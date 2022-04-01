@@ -38,10 +38,12 @@ namespace DoorstepsExperimentFormApi
             string corsDomain = "http://localhost:4200";
             services.AddCors(options =>
             {
-                options.AddDefaultPolicy(
-                    builder =>
+                options.AddPolicy("CORSPolicy", builder => 
                     {
-                        builder.WithOrigins(corsDomain);
+                        builder.WithOrigins(corsDomain)
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials();
                     });
             });
 
@@ -68,7 +70,7 @@ namespace DoorstepsExperimentFormApi
 
             app.UseAuthorization();
 
-            app.UseCors();
+            app.UseCors("CORSPolicy");
 
             app.UseEndpoints(endpoints =>
             {

@@ -29,5 +29,17 @@ namespace DoorstepsExperimentForm.DAL.Repository
         {
             return await _forms.Find(_ => true).ToListAsync();
         }
+
+        public async Task Post(List<Form> forms)
+        {
+            foreach (var form in forms)
+            {
+                await _forms.ReplaceOneAsync(
+                    doc => doc.Id == form.Id,
+                    form,
+                    new ReplaceOptions { IsUpsert = true }
+                );
+            }
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace DoorstepsExperimentForm.DAL.Interface
     {
         Task<Form> Get(string url);
         Task<IEnumerable<Form>> Get();
+        Task Post(List<Form> forms);
     }
 }

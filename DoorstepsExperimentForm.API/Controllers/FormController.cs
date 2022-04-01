@@ -1,7 +1,9 @@
-﻿using DoorstepsExperimentForm.BLL.Interface;
+﻿using DoorstepsExperimentForm.API.Models;
+using DoorstepsExperimentForm.BLL.Interface;
 using DoorstepsExperimentForm.DAL.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DoorstepsExperimentForm.API.Controllers
@@ -26,6 +28,12 @@ namespace DoorstepsExperimentForm.API.Controllers
         public async Task<Form> Get(string url)
         {
             return await _formService.Get(url);
+        }
+
+        [HttpPost]
+        public async Task Post([FromBody] List<Form> forms)
+        {
+            await _formService.Post(forms);
         }
      }
 }

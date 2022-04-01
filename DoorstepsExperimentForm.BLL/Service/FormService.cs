@@ -27,5 +27,11 @@ namespace DoorstepsExperimentForm.BLL.Service
         {
             return await _formRepository.Get();
         }
+
+        public async Task Post(List<Form> forms)
+
+        {
+            await _formRepository.Post(forms);
+        }
     }
 }
