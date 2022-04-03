@@ -32,6 +32,10 @@ namespace DoorstepsExperimentFormApi
         public void ConfigureServices(IServiceCollection services)
         {            
             services.AddSingleton<IMongoClient, MongoClient>(sp => new MongoClient(Configuration.GetConnectionString("MongoDb")));
+
+            services.AddTransient<IAnswerRepository, AnswerRepository>();
+            services.AddTransient<IAnswerService, AnswerService>();
+
             services.AddTransient<IFormRepository, FormRepository>();
             services.AddTransient<IFormService, FormService>();
 

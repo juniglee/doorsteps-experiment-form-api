@@ -32,15 +32,6 @@ namespace DoorstepsExperimentForm.DAL.Repository
 
         public async Task Post(List<Form> forms)
         {
-            /*foreach (var form in forms)
-            {
-                await _forms.ReplaceOneAsync(
-                    doc => doc.Id == form.Id,
-                    form,
-                    new ReplaceOptions { IsUpsert = true }
-                );
-            }*/
-
             var bulkOps = new List<WriteModel<Form>>();
             foreach (var form in forms)
             {
