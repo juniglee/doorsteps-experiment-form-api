@@ -1,12 +1,13 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.IdGenerators;
 using System.Collections.Generic;
 
 namespace DoorstepsExperimentForm.DAL.Model
 {
     public class Form
     {
-        [BsonId]
+        [BsonId(IdGenerator = typeof(ObjectIdGenerator))]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string Name { get; set; }
@@ -27,6 +28,6 @@ namespace DoorstepsExperimentForm.DAL.Model
     public class Option
     {
         public string Key { get; set; }
-        public int Value { get; set; }
+        public string Value { get; set; }
     }
 }

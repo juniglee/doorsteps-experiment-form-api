@@ -33,5 +33,11 @@ namespace DoorstepsExperimentForm.BLL.Service
         {
             await _formRepository.Post(forms);
         }
+
+        public async Task Delete(string id)
+
+        {
+            await _formRepository.Delete(id);
+        }
     }
 }

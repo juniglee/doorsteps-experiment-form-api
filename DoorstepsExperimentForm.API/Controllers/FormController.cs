@@ -1,9 +1,7 @@
-﻿using DoorstepsExperimentForm.API.Models;
-using DoorstepsExperimentForm.BLL.Interface;
+﻿using DoorstepsExperimentForm.BLL.Interface;
 using DoorstepsExperimentForm.DAL.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DoorstepsExperimentForm.API.Controllers
@@ -35,5 +33,11 @@ namespace DoorstepsExperimentForm.API.Controllers
         {
             await _formService.Post(forms);
         }
-     }
+
+        [HttpDelete("{id}")]
+        public async Task Delete(string id)
+        {
+            await _formService.Delete(id);
+        }
+    }
 }

@@ -30,5 +30,10 @@ msbuild.log
 msbuild.err
 msbuild.wrn
 
+*.BLL/[Bb]in/
+*.DAL/[Bb]in/
+*.BLL/[Oo]bj/
+*.DAL/[Oo]bj/
+
 # Visual Studio 2015
 .vs/

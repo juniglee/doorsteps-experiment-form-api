@@ -13,5 +13,6 @@ namespace DoorstepsExperimentForm.BLL.Interface
         Task<Form> Get(string url);
         Task<IEnumerable<Form>> Get();
         Task Post(List<Form> forms);
+        Task Delete(string id);
     }
 }

@@ -32,14 +32,34 @@ namespace DoorstepsExperimentForm.DAL.Repository
 
         public async Task Post(List<Form> forms)
         {
-            foreach (var form in forms)
+            /*foreach (var form in forms)
             {
                 await _forms.ReplaceOneAsync(
                     doc => doc.Id == form.Id,
                     form,
                     new ReplaceOptions { IsUpsert = true }
                 );
+            }*/
+
+            var bulkOps = new List<WriteModel<Form>>();
+            foreach (var form in forms)
+            {
+                if (form.Id == null)
+                {
+                    form.Id = ObjectId.GenerateNewId().ToString();
+                }
+                var upsertOne = new ReplaceOneModel<Form>(
+                    Builders<Form>.Filter.Where(c => c.Id == form.Id),
+                    form)
+                { IsUpsert = true };
+                bulkOps.Add(upsertOne);
             }
+            await _forms.BulkWriteAsync(bulkOps);
+        }
+
+        public async Task Delete(string id)
+        {
+            await _forms.DeleteOneAsync(c => c.Id == id);
         }
     }
 }
